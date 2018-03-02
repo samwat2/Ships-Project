@@ -8,8 +8,8 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.create(job_params)
-    redirect_to @job
+    @job = current_user.jobs.create(job_params)
+    redirect_to jobs_path
   end
 
   def show
@@ -33,6 +33,6 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:description, :orgin, :destination, :cost, :container, :user_id)
+    params.require(:job).permit(:description, :orgin, :destination, :cost, :container)
   end
 end

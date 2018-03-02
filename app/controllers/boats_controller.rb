@@ -1,6 +1,6 @@
-class BoatController < ApplicationController
+class BoatsController < ApplicationController
   def index
-    @boats = Boats.all
+    @boats = Boat.all
   end
 
   def new
@@ -8,7 +8,7 @@ class BoatController < ApplicationController
   end
 
   def create
-    @boat = Boat.create(boat_params)
+    @boat = current_user.boats.create(boat_params)
     redirect_to @boat
   end
 
@@ -33,6 +33,6 @@ class BoatController < ApplicationController
 
   private
   def boat_params
-    params.require(:boat).permit(:name, :containers, :location, :user_id)
+    params.require(:boat).permit(:name, :containers, :location)
   end
 end

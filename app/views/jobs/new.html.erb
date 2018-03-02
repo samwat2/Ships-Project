@@ -1,2 +1,10 @@
-<h1>Jobs#new</h1>
+<h1>OMG CREATE A NEW JOB!</h1>
 <p>Find me in app/views/jobs/new.html.erb</p>
+<%= form_with model: @job, local: true do |f| %>
+	<%= f.text_field :description, placeholder: 'Description' %>
+	<%= f.text_field :destination, placeholder: 'Destination' %>
+	<%= f.text_field :orgin, placeholder: 'Orgin' %>
+	<%= f.number_field :containers, placeholder: 'Amount of Containers' %>
+	<%= f.number_field :cost, placeholder: 'Salary' %>
+	<%= f.submit %>
+<% end %>
