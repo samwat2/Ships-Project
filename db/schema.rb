@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_02_000047) do
+ActiveRecord::Schema.define(version: 2018_03_02_004224) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2018_03_02_000047) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "boat_jobs", force: :cascade do |t|
+    t.integer "boat_id"
+    t.integer "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boat_id"], name: "index_boat_jobs_on_boat_id"
+    t.index ["job_id"], name: "index_boat_jobs_on_job_id"
+  end
+
   create_table "boats", force: :cascade do |t|
     t.string "name"
     t.integer "containers"
@@ -41,6 +50,18 @@ ActiveRecord::Schema.define(version: 2018_03_02_000047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_boats_on_user_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "description"
+    t.integer "containers"
+    t.decimal "cost"
+    t.integer "user_id"
+    t.string "destination"
+    t.string "orgin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
