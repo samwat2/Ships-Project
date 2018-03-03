@@ -9,7 +9,7 @@ class BoatsController < ApplicationController
 
   def create
     @boat = current_user.boats.create(boat_params)
-    redirect_to @boat
+    redirect_to boats_path
   end
 
   def show
@@ -17,17 +17,17 @@ class BoatsController < ApplicationController
   end
 
   def edit
-    @boat = Boat.find(params[:id])
+    @boat = current_users.boats.find(params[:id])
   end
 
   def update
-    @boat = Boat.find(params[:id])
+    @boat = current_users.boats.find(params[:id])
     @boat.update_attributes(boat_params)
     redirect_to @boat
   end
 
   def destroy
-    Boat.find(params[:id]).destroy
+    current_user.boats.find(params[:id]).destroy
     redirect_to users_path
   end
 

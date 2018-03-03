@@ -3,5 +3,11 @@
 <% @users.each do |user| %>
 		<p>Fist Name: <%= user.first_name %></p> 
 		<p>Last Name: <%= user.last_name %></p> 
-		<p>Email: <%= user.email %></p> 
+		<p>Email: <%= user.email %></p>
+		<% user.jobs.each do |job| %>
+			<p>Job Description:<%= job.description %></p>	
+		<% end %>
+		<% user.boats.each do |boat| %>
+			<p>Boat Name: <%= boat.name %></p>
+		<% end %>
 <% end %>

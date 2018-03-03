@@ -3,3 +3,9 @@
 <p><%= @user.first_name %></p>
 <p><%= @user.last_name %></p>
 <p><%= @user.email %></p>
+<% current_user.jobs.each do |job| %>
+	<p>Job Description:<%= job.description %></p>	
+<% end %>
+<% current_user.boats.each do |boat| %>
+	<p>Boat Name: <%= boat.name %></p>
+<% end %>
