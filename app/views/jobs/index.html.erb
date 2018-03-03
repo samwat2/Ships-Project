@@ -1,12 +1,4 @@
 <h1>jobs#index</h1>
+<%= render @jobs %>
 
 
-<% @jobs.each do |job| %>
-	<h2>
-		Job: <%= job.description %> ,
-		Destination: <%= job.destination %> ,
-		Orgin: <%= job.orgin %> ,
-		Containers: <%= job.containers %> ,
-		Salary: <%= job.cost %>
-	</h2>
-<% end %>

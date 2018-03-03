@@ -17,22 +17,22 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = current_user.jobs.find(params[:id])
   end
 
   def update
-    @job = Job.find(params[:id])
+    @job = current_user.jobs.find(params[:id])
     @job.update_attributes(job_params)
     redirect_to @job
   end
 
   def destroy
-    Job.find(params[:id]).destroy
+    current_user.jobs.find(params[:id]).destroy
     redirect_to users_path
   end
 
   private
   def job_params
-    params.require(:job).permit(:description, :orgin, :destination, :cost, :container)
+    params.require(:job).permit(:description, :orgin, :destination, :cost, :containers)
   end
 end

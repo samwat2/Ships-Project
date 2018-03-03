@@ -1,0 +1,18 @@
+User: <%= job.user.first_name %>
+Job: <%= job.description %> ,
+Destination: <%= job.destination %> ,
+Orgin: <%= job.orgin %> ,
+Containers: <%= job.containers %> ,
+Salary: <%= job.cost %>
+
+
+<% job.boats.each do |boat| %>
+	boat:
+	<%= boat.name %>
+<% end %>
+<%= form_with model: BoatJob.new do |f| %>
+	<%= f.collection_select(:boat_id, Boat.all, :id, :name, prompt: true) %>
+	<%= f.hidden_field :job_id, value: job.id %>
+	<%= f.submit %>
+<% end %>
+

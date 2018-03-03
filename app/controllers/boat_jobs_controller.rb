@@ -6,6 +6,10 @@ class BoatJobsController < ApplicationController
   end
 
   def create
+    @job = Job.find(params[:boat_job][:job_id])
+    @boat = Boat.find(params[:boat_job][:boat_id])
+    @boat.jobs << @job
+    redirect_back fallback_location: boats_path
   end
 
   def show
