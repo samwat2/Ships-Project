@@ -1,4 +1,9 @@
-<h1>Boats#new</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Boat Creation</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
 <p>Find me in app/views/boats/new.html.erb</p>
 <%= form_with model: @boat, data: {"parsely-validate": ''}, local: true do |f| %>
 	<%= f.text_field :name, placeholder: 'name', required: true %>

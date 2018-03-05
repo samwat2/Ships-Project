@@ -10,12 +10,19 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require parsley
+ *
  *= require_tree .
  *= require_self
  */
+@import 'parsley';
+@import "bootstrap";
+
 body, html {
-	background: #BBD2C5;
-	background: -webkit-linear-gradient(to left, #292E49, #536976, #BBD2C5);
-	background: linear-gradient(to left, #292E49, #536976, #BBD2C5);
+	// background: #BBD2C5;
+	// background: -webkit-linear-gradient(to left, #292E49, #536976, #BBD2C5);
+	// background: linear-gradient(to left, #292E49, #536976, #BBD2C5);
+	background: #bdc3c7;
+	background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+	background: linear-gradient(to right, #2c3e50, #bdc3c7);
+
 }

@@ -1,13 +1,31 @@
-<h1>Users#index</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">All User's</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
 
-<% @users.each do |user| %>
-		<p>Fist Name: <%= user.first_name %></p> 
-		<p>Last Name: <%= user.last_name %></p> 
-		<p>Email: <%= user.email %></p>
-		<% user.jobs.each do |job| %>
-			<p>Job Description:<%= job.description %></p>	
-		<% end %>
-		<% user.boats.each do |boat| %>
-			<p>Boat Name: <%= boat.name %></p>
-		<% end %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="card border-success mb-3" style="max-width: 18rem;">
+			<div class="col">
+				<% @users.each do |user| %>
+						<div class="card-header bg-transparent border-success">Fist Name: <%= user.first_name %></div> 
+						<div class="card-header bg-transparent border-success">Last Name: <%= user.last_name %></div> 
+						<div class="card-header bg-transparent border-success">Email: <%= user.email %></div> 
+					  <div class="card-body text-success">
+							<h5 class="card-title">Jobs and Boats</h5>
+							<% user.jobs.each do |job| %>
+								<p class="card-text">Job Description:<%= job.description %></p>	
+							<% end %>
+							<% user.boats.each do |boat| %>
+								<div class="card-footer bg-transparent border-success">Boat Name: <%= boat.name %></div>
+							<% end %>
+					  </div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
