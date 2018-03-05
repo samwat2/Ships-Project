@@ -8,8 +8,13 @@ class BoatsController < ApplicationController
   end
 
   def create
-    @boat = current_user.boats.create(boat_params)
-    redirect_to boats_path
+    @boat = current_user.boats.new(boat_params)
+    respond_to do |format|
+      if @boat.save
+        format.html {redirect_to boats_path}
+        format.js #vies/boats/create.js.erb
+      end
+    end
   end
 
   def show
@@ -27,12 +32,17 @@ class BoatsController < ApplicationController
   end
 
   def destroy
-    current_user.boats.find(params[:id]).destroy
-    redirect_to users_path
+    @boat = current_user.boats.find(params[:id])
+    respond_to do |format|
+      if @boat.destroy
+        format.html {redirect_to users_path}
+        format.js
+      end
+    end
   end
 
   private
   def boat_params
-    params.require(:boat).permit(:name, :containers, :location)
+    params.require(:boat).permit(:name, :containers, :location, :image)
   end
 end
