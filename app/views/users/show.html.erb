@@ -1,11 +1,17 @@
-<h1>Users#show</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><u><%= @user.first_name %> <%= @user.last_name %></u></h1>
+    <p class="lead">Email: <%= @user.email %></p>
+  </div>
+</div>
 
-<p><%= @user.first_name %></p>
-<p><%= @user.last_name %></p>
-<p><%= @user.email %></p>
-<% current_user.jobs.each do |job| %>
-	<p>Job Description:<%= job.description %></p>	
-<% end %>
-<% current_user.boats.each do |boat| %>
-	<p>Boat Name: <%= boat.name %></p>
-<% end %>
+<ul class="list-group list-group-flush">
+	<% current_user.jobs.each do |job| %>
+			<h5><u>Job Description:</u></h5>
+			<li class="list-group-item"><%= job.description %></li>
+	<% end %>
+	<% current_user.boats.each do |boat| %>
+			<h5><u>Boat Name:</u></h5>
+			<li class="list-group-item"><%= boat.name %></li>
+	<% end %>
+</ul>

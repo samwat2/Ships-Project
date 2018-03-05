@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.2'
 
+gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'parsley-rails'
 gem 'zxcvbn-ruby'
