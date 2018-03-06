@@ -5,20 +5,22 @@
   </div>
 </div>
 
-<%= form_with model: Boat.new, id:'boat-new-form', data: {"parsely-validate": ''} do |f| %>
-	<%= f.text_field :name, placeholder: 'name', required: true %>
-	<%= f.text_field :location, placeholder: 'location', required: true %>
-	<%= f.number_field :containers, placeholder: 'Amount of Containers', required: true %>
-	<%= f.file_field :image %>
-	<%= f.submit %>
-<% end %>
 <ul class="list-group list-group-flush">
 	<% current_user.jobs.each do |job| %>
 			<h5><u>Job Description:</u></h5>
 			<li class="list-group-item"><%= job.description %></li>
 	<% end %>
 	<div class="boats">
-		<%= render current_user.boats %>
+		<div class="boat">
+			<h5><u>Boat info:</u></h5>
+			<li class="list-group-item">Name: <%= boat.name %></li>
+			<li class="list-group-item">location: <%= boat.location %>, Amount of containers:<%= boat.containers %></li>
+			<% if boat.image.attached? %>
+				<%= image_tag boat.image %>
+			<% end %>
+			<%= link_to "View", boat %>
+			<%= link_to "Delete", boat, method: :delete, remote: true, class:'delete-boat-link' %>
+		</div>
 	</div>
 </ul>
 

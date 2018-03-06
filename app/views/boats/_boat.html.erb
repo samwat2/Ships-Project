@@ -1,10 +1,16 @@
-<div class="boat">
-	<h5><u>Boat info:</u></h5>
-	<li class="list-group-item">Name: <%= boat.name %></li>
-	<li class="list-group-item">location: <%= boat.location %>, Amount of containers:<%= boat.containers %></li>
-	<% if boat.image.attached? %>
-		<%= image_tag boat.image %>
+<div class="boat" id="boat-<%= boat.id %>">
+	<p>Name: <%= boat.name %></p> 
+	<p>Location: <%= boat.location %></p> 
+	<p>Amount of containers: <%= boat.containers %></p>
+	<div class="boat-jobs">
+		<% boat.jobs.each do |job| %>
+			<%= render 'boat_jobs/boatjob', job: job %>
+		<% end %>
+	</div>
+	<%= form_with model: BoatJob.new do |f|%>
+		<%= f.collection_select(:job_id, Job.all, :id, :description, prompt: true) %>
+		<%= f.hidden_field :boat_id, value: boat.id %>
+		<%= hidden_field_tag :type, 'boat'  %>
+		<%= f.submit %>
 	<% end %>
-	<%= link_to "View", boat %>
-	<%= link_to "Delete", boat, method: :delete, remote: true, class:'delete-boat-link' %>
 </div>

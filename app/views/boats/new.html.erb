@@ -5,9 +5,11 @@
   </div>
 </div>
 <p>Find me in app/views/boats/new.html.erb</p>
-<%= form_with model: @boat, data: {"parsely-validate": ''}, local: true do |f| %>
-	<%= f.text_field :name, placeholder: 'name', required: true %>
-	<%= f.text_field :location, placeholder: 'location', required: true %>
-	<%= f.number_field :containers, placeholder: 'Amount of Containers', required: true %>
-	<%= f.submit %>
-<% end %>
+<div class="boat">
+	<%= form_with model: @boat, data: {"parsely-validate": ''}, local: true do |f| %>
+		<%= f.text_field :name, placeholder: 'name', required: true %>
+		<%= f.text_field :location, placeholder: 'location', required: true %>
+		<%= f.number_field :containers, placeholder: 'Amount of Containers', required: true %>
+		<%= f.submit %>
+	<% end %>
+</div>

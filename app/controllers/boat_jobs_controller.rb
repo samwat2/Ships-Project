@@ -8,8 +8,12 @@ class BoatJobsController < ApplicationController
   def create
     @job = Job.find(params[:boat_job][:job_id])
     @boat = Boat.find(params[:boat_job][:boat_id])
+    @type = params[:type]
     @boat.jobs << @job
-    redirect_back fallback_location: boats_path
+    respond_to do |format|
+     format.html {redirect_back fallback_location: boats_path}
+     format.js
+    end
   end
 
   def show
