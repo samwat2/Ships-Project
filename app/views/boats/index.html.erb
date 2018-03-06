@@ -4,17 +4,4 @@
     <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
   </div>
 </div>
-
-<% @boats.each do |boat| %>
-		<p>Name: <%= boat.name %></p> 
-		<p>Location: <%= boat.location %></p> 
-		<p>Amount of containers: <%= boat.containers %></p>
-		<% boat.jobs.each do |job| %>
-			<%= job.description %>
-		<% end %>
-		<%= form_with model: BoatJob.new do |f|%>
-			<%= f.collection_select(:job_id, Job.all, :id, :description, prompt: true) %>
-			<%= f.hidden_field :boat_id, value: boat.id %>
-			<%= f.submit %>
-		<% end %>
-<% end %>
+<%= render @boats %>
