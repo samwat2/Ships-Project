@@ -1,26 +1,43 @@
-<div class="card border-success mb-3" style="max-width: 18rem;" id="card">
-	<div class="job" id="job-<%= job.id %>">
-		<div class="card-header bg-transparent border-success">User: <%= job.user.first_name %></div>
-		<div class="card-body text-success">
-			<h5 class="card-title">Job: <%= job.description %></h5>
-			<p class= "card text">
-				Destination: <%= job.destination %> ,
-				Orgin: <%= job.orgin %> ,
-				Containers: <%= job.containers %> ,
-				Salary: <%= job.cost %></p>
-				<div class="boat-jobs">
-					<% job.boats.each do |boat| %>
-						<%= render 'boat_jobs/jobboat', boat: boat %>
-					<% end %>
+<div class="col-4" id="jobs-list">
+	<div class="card border-danger mb-3" style="max-width: 18rem;" id="card">
+		<div class="job" id="job-<%= job.id %>">
+			<div class="card-header bg-transparent border-danger">Creator: <%= job.user.first_name %></div>
+			<div class="card-body text-danger">
+				<h5 class="card-title">Job: <%= job.description %></h5>
+				<div class="dropdown">
+					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#card-info<%= job.id %>" aria-expanded="false" aria-controls="card-info<%= job.id %>">Info</button>
+					<div class="row">
+						<div class="col">
+							<div class="collapse multi-collapse" id="card-info<%= job.id %>">
+								<div class="card-body">
+									<p class= "card text">
+										<h6>Job Info</h6>
+										Destination: <%= job.destination %> ,
+										Orgin: <%= job.orgin %> ,
+										Containers: <%= job.containers %> ,
+										Salary: <%= job.cost %></p>
+										<div class="boat-jobs">
+											<h6>Boat Info</h6>
+											<% job.boats.each do |boat| %>
+												<%= render 'boat_jobs/jobboat', boat: boat %>
+											<% end %>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+			</div>
 		</div>
-	</div>
-	<div class="card-footer bg-transparent border-success">
-		<%= form_with model: BoatJob.new do |f| %>
-			<%= f.collection_select(:boat_id, Boat.all, :id, :name, prompt: true) %>
-			<%= f.hidden_field :job_id, value: job.id %>
-			<%= hidden_field_tag :type, 'job'  %>
-			<%= f.submit class:"btn btn-outline-secondary" %>
-		<% end %>
+		<div class="card-footer bg-transparent border-danger">
+			<div class="form-group">
+				<%= form_with model: BoatJob.new do |f| %>
+					<%= f.collection_select :boat_id, Boat.all, :id, :name, {prompt: true}, class: "custom-select" %>
+					<%= f.hidden_field :job_id, value: job.id %>
+					<%= hidden_field_tag :type, 'job'  %>
+					<%= f.submit class:"btn btn-danger" %>
+				<% end %>	
+			</div>
+		</div>
 	</div>
 </div>

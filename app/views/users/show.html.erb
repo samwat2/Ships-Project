@@ -8,19 +8,21 @@
 <ul class="list-group list-group-flush">
 	<% current_user.jobs.each do |job| %>
 			<h5><u>Job Description:</u></h5>
-			<li class="list-group-item"><%= job.description %></li>
+			<li class="list-group-item"><%= job.description %>
+			<%= link_to "View", job %>
+			<%= link_to "Delete", job, method: :delete, remote: true, class:'delete-boat-link' %></li>
 	<% end %>
 	<div class="boats">
 		<div class="boat">
-			<h5><u>Boat info:</u></h5>
 			<% current_user.boats.each do |boat| %>
-				<li class="list-group-item">Name: <%= boat.name %></li>
-				<li class="list-group-item">location: <%= boat.location %>, Amount of containers:<%= boat.containers %></li>
+				<h5><u>Boat info:</u></h5>
+				<li class="list-group-item"><u>Name: <%= boat.name %></u>
+				location: <%= boat.location %>, Amount of containers:<%= boat.containers %>
 				<% if boat.image.attached? %>
 					<%= image_tag boat.image %>
 				<% end %>
 				<%= link_to "View", boat %>
-				<%= link_to "Delete", boat, method: :delete, remote: true, class:'delete-boat-link' %>
+				<%= link_to "Delete", boat, method: :delete, remote: true, class:'delete-boat-link' %></li>
 			<% end %>
 		</div>
 	</div>

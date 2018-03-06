@@ -26,3 +26,14 @@ body, html {
 	background: linear-gradient(to right, #2c3e50, #bdc3c7);
 
 }
+
+#card {
+	background: inherit;
+	transition: all .2s ease;
+	&:hover {
+		cursor: pointer;
+		background: #606c88;
+    background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);
+    background: linear-gradient(to right, #3f4c6b, #606c88); 
+	}
+}
