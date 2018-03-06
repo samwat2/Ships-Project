@@ -1,19 +1,26 @@
-<div class="job" id="job-<%= job.id %>">
-	User: <%= job.user.first_name %>
-	Job: <%= job.description %> ,
-	Destination: <%= job.destination %> ,
-	Orgin: <%= job.orgin %> ,
-	Containers: <%= job.containers %> ,
-	Salary: <%= job.cost %>
-	<div class="boat-jobs">
-		<% job.boats.each do |boat| %>
-			<%= render 'boat_jobs/jobboat', boat: boat %>
+<div class="card border-success mb-3" style="max-width: 18rem;" id="card">
+	<div class="job" id="job-<%= job.id %>">
+		<div class="card-header bg-transparent border-success">User: <%= job.user.first_name %></div>
+		<div class="card-body text-success">
+			<h5 class="card-title">Job: <%= job.description %></h5>
+			<p class= "card text">
+				Destination: <%= job.destination %> ,
+				Orgin: <%= job.orgin %> ,
+				Containers: <%= job.containers %> ,
+				Salary: <%= job.cost %></p>
+				<div class="boat-jobs">
+					<% job.boats.each do |boat| %>
+						<%= render 'boat_jobs/jobboat', boat: boat %>
+					<% end %>
+				</div>
+		</div>
+	</div>
+	<div class="card-footer bg-transparent border-success">
+		<%= form_with model: BoatJob.new do |f| %>
+			<%= f.collection_select(:boat_id, Boat.all, :id, :name, prompt: true) %>
+			<%= f.hidden_field :job_id, value: job.id %>
+			<%= hidden_field_tag :type, 'job'  %>
+			<%= f.submit class:"btn btn-outline-secondary" %>
 		<% end %>
 	</div>
-	<%= form_with model: BoatJob.new do |f| %>
-		<%= f.collection_select(:boat_id, Boat.all, :id, :name, prompt: true) %>
-		<%= f.hidden_field :job_id, value: job.id %>
-		<%= hidden_field_tag :type, 'job'  %>
-		<%= f.submit %>
-	<% end %>
 </div>
