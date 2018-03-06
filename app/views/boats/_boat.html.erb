@@ -1,18 +1,20 @@
-<div class="col-4" id="boatss-list">
+<div class="col-4" id="boats-list">
 	<div class="card border-danger mb-3" style="max-width: 18rem;" id="card">
 		<div class="boat" id="boat-<%= boat.id %>">
 			<div class="card-header bg-transparent border-danger">Boat Name: <%= boat.name %></div>
 			<div class="card-body text-danger">
 				<h5 class="card-title">Boat/Vessell info</h5>
+				 <% if boat.image.attached? %>
+					 <%= image_tag boat.image, class: "rounded img-thumbnail" %>
+				 <% end %>
 				<div class="dropdown">
 					<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#card-info<%= boat.id %>" aria-expanded="false" aria-controls="card-info<%= boat.id %>">Info</button>
 					<div class="row">
 						<div class="col">
 							<div class="collapse multi-collapse" id="card-info<%= boat.id %>">
 								<div class="card-body">
-									<p class="card text">
-										 Location: <%= boat.location %>
-										 Amount of containers: <%= boat.containers %></p>
+									<p class="card text">Location: <%= boat.location %></p>
+									<p class="card text">Amount of containers: <%= boat.containers %></p> 
 									<div class="boat-jobs">
 										<% boat.jobs.each do |job| %>
 											<%= render 'boat_jobs/boatjob', job: job %>
