@@ -19,7 +19,6 @@
 								<% if boat.image.attached? %>
 									<%= image_tag boat.image, class: "rounded img-thumbnail" %>
 								<% end %>
-								<%= link_to "View", boat %>
 								<%= link_to "Delete", boat, method: :delete, remote: true, class:'delete-boat-link' %></p>
 						</div>
 					</div>
@@ -37,7 +36,6 @@
 					    <h5 class="card-title">Description</h5>
 							<p class="card-text">
 								<%= job.description %>
-								<%= link_to "View", job %>
 								<%= link_to "Delete", job, method: :delete, remote: true, class:'delete-boat-link' %></p>
 						</div>
 					</div>
