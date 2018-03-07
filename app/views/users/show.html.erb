@@ -5,22 +5,44 @@
   </div>
 </div>
 
-<ul class="list-group list-group-flush">
-	<% current_user.jobs.each do |job| %>
-			<h5><u>Job Description:</u></h5>
-			<li class="list-group-item"><%= job.description %></li>
-	<% end %>
-	<div class="boats">
-		<div class="boat">
-			<h5><u>Boat info:</u></h5>
-			<li class="list-group-item">Name: <%= boat.name %></li>
-			<li class="list-group-item">location: <%= boat.location %>, Amount of containers:<%= boat.containers %></li>
-			<% if boat.image.attached? %>
-				<%= image_tag boat.image %>
-			<% end %>
-			<%= link_to "View", boat %>
-			<%= link_to "Delete", boat, method: :delete, remote: true, class:'delete-boat-link' %>
-		</div>
+
+<div class="container">
+	<div class="row boats">
+		<% current_user.boats.each do |boat| %>
+			<div class="col-3">
+				<div class="card text-white bg-dark mb-3" style="max-width: 18rem;" >
+					<div class="boat">
+					  <div class="card-header">Boat info:</div>
+					  <div class="card-body">
+					    <h5 class="card-title"><u>Name: <%= boat.name %></u></h5>
+							<p class="card-text">location: <%= boat.location %>, Amount of containers:<%= boat.containers %>
+								<% if boat.image.attached? %>
+									<%= image_tag boat.image, class: "rounded img-thumbnail" %>
+								<% end %>
+								<%= link_to "Delete", boat, method: :delete, remote: true, class:'delete-boat-link' %></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
 	</div>
-</ul>
+	<div class="row jobs">
+		<% current_user.jobs.each do |job| %>
+			<div class="col-3">
+				<div class="card text-white bg-danger mb-3 col-3" style="max-width: 18rem;">
+					<div class="job">
+					  <div class="card-header">Job</div>
+					  <div class="card-body">
+					    <h5 class="card-title">Description</h5>
+							<p class="card-text">
+								<%= job.description %>
+								<%= link_to "Delete", job, method: :delete, remote: true, class:'delete-boat-link' %></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
 

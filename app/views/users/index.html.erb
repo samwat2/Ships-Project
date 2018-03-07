@@ -1,31 +1,39 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">All User's</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
   </div>
 </div>
-
 <div class="container">
 	<div class="row">
-		<div class="card border-success mb-3" style="max-width: 18rem;">
-			<div class="col">
-				<% @users.each do |user| %>
-						<div class="card-header bg-transparent border-success">Fist Name: <%= user.first_name %></div> 
-						<div class="card-header bg-transparent border-success">Last Name: <%= user.last_name %></div> 
-						<div class="card-header bg-transparent border-success">Email: <%= user.email %></div> 
-					  <div class="card-body text-success">
-							<h5 class="card-title">Jobs and Boats</h5>
-							<% user.jobs.each do |job| %>
-								<p class="card-text">Job Description:<%= job.description %></p>	
-							<% end %>
-							<% user.boats.each do |boat| %>
-								<div class="card-footer bg-transparent border-success">Boat Name: <%= boat.name %></div>
-							<% end %>
-					  </div>
-				<% end %>
+		<% @users.each do |user| %>
+			<div class="col-3">
+				<div class="card border-danger mb-3" style="max-width: 18rem;" id="card">
+					<div class="card-header bg-transparent border-danger">Name: <%= user.first_name %> <%= user.last_name %></div>
+					<div class="card-body text-danger">
+						<h5 class="card-title">Creator of:</h5>
+						<div class="dropdown">
+							<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#card-info<%= user.id %>" aria-expanded="false" aria-controls="card-info<%= user.id %>">Projects</button>
+							<div class="row">
+								<div class="col">
+									<div class="collapse multi-collapse" id="card-info<%= user.id %>">
+										<div class="card-body">
+											<% user.jobs.each do |job| %>
+												<p class="card-text">Job Description:<%= job.description %></p>	
+											<% end %>
+											<% user.boats.each do |boat| %>
+												<p class="card-text">Boat Name: <%= boat.name %></p>
+											<% end %>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
+		<% end %>
 	</div>
 </div>
+
 
 
