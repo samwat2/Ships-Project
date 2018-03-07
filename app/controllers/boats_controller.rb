@@ -1,6 +1,6 @@
 class BoatsController < ApplicationController
   def index
-    @boats = Boat.all
+    @boats = Boat.all.reverse
   end
 
   def new
