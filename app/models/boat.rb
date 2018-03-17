@@ -3,4 +3,8 @@ class Boat < ApplicationRecord
   has_many :boat_jobs, dependent: :destroy
   has_many :jobs, through: :boat_jobs
   has_one_attached :image
+
+  validates :name, presence: true
+  validates :containers, presence: true
+  validates :location, presence: true
 end
