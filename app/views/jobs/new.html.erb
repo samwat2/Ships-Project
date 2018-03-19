@@ -8,8 +8,8 @@
 	<div class="form-group">
 		<%= form_with model: @job, data: {"parsely-validate": ''}, local: true do |f| %>
 			<%= f.text_field :description, placeholder: 'Description', required: true, class: "form-control" %>
-			<%= f.text_field :destination, placeholder: 'Destination', required: true, class: "form-control" %>
-			<%= f.text_field :orgin, placeholder: 'Orgin', required: true, class: "form-control" %>
+			<%= f.select :destination, ['Sweden', 'USA', 'China', 'Thailand', 'Norway'], {}, {class: "form-control", required: true} %>
+			<%= f.select :origin, ['Sweden', 'USA', 'China', 'Thailand', 'Norway'], {}, {class: "form-control", required: true} %>
 			<%= f.number_field :containers, placeholder: 'Amount of Containers', required: true, class: "custom-select" %>
 			<%= f.number_field :cost, placeholder: 'Salary', required: true, class: "custom-select" %>
 			<%= f.submit class: "btn btn-primary" %>
