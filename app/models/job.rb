@@ -5,5 +5,6 @@ class Job < ApplicationRecord
 
   validates :cost, presence: true, numericality: { greater_than: 1000 } 
   validates :description, uniqueness: true, presence: true, length: { minimum: 50 }
-  validates_inclusion_of :location, in: ['Sweden', 'USA', 'China', 'Thailand', 'Norway']
+  validates_inclusion_of :origin, in: ['Sweden', 'USA', 'China', 'Thailand', 'Norway']
+  validates_inclusion_of :destination, in: ['Sweden', 'USA', 'China', 'Thailand', 'Norway']
 end
